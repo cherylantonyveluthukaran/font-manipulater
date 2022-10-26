@@ -18,16 +18,28 @@ function modelLoaded(){
     console.log('PoseNet is Initialized!');
 
 }
+function draw(){
+    background('#88eedd');
+    textSize(difference);
+    fill('#003366');
+    text('Cheryl',50,100);
+}
 
 function gotPoses(results){
+
     if(results.length > 0){
         console.log(results);
-        noseX = results[0].pose.nose.x;
-        noseY = results[0].pose.nose.y;
-        console.log("noseX = "+noseX+"noseY = "+noseY);
         leftWristX = results[0].pose.leftWrist.x;
         rightWristX = results[0].pose.rightWrist.x;
+
         difference = floor(leftWristX - rightWristX);
-        console.log("leftWristX = "+leftWristX+"rightWristX = "+rightWristX+"difference"+difference)
+        
+        console.log("leftWristX = "+results[0].pose.leftWristX+"difference = "+difference)
+        console.log("rightWristX = "+results[0].pose.rightWristX+"difference = "+difference)
+    }
+    if(error){
+        console.error(error);
     }
     }
+
+    
